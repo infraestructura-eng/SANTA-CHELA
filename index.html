@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SANTA CHELA - POS Premium Bar</title>
   
-  <!-- FUENTES TIPOGRÁFICAS MODERNAS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -38,7 +37,6 @@
 
     .container { max-width: 1250px; margin: 0 auto; }
 
-    /* HEADER CYBER-PUB */
     header {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -55,72 +53,32 @@
     }
 
     .brand { display: flex; align-items: center; gap: 15px; }
-    .brand-icon { 
-      font-size: 2.8rem; 
-      filter: drop-shadow(0 0 8px var(--neon-gold));
-      animation: float 3s ease-in-out infinite;
-    }
+    .brand-icon { font-size: 2.8rem; filter: drop-shadow(0 0 8px var(--neon-gold)); animation: float 3s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
     .brand h1 { 
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem; 
-      color: var(--neon-gold); 
-      letter-spacing: 3px; 
-      text-transform: uppercase; 
-      font-weight: 700;
-      text-shadow: 0 0 12px var(--neon-glow);
+      font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; color: var(--neon-gold); 
+      letter-spacing: 3px; text-transform: uppercase; font-weight: 700; text-shadow: 0 0 12px var(--neon-glow);
     }
 
     .kpi-container { display: flex; gap: 15px; flex-wrap: wrap; }
-    .kpi-card { 
-      background: rgba(0, 0, 0, 0.5); 
-      border: 1px solid var(--card-border); 
-      padding: 10px 20px; 
-      border-radius: 12px; 
-      text-align: center;
-      min-width: 140px;
-    }
+    .kpi-card { background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); padding: 10px 20px; border-radius: 12px; text-align: center; min-width: 140px; }
     .kpi-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
     .kpi-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--neon-gold); }
 
     .btn-lock {
-      background: rgba(251, 191, 36, 0.15);
-      border: 1px solid var(--neon-gold);
-      color: var(--neon-gold);
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      margin-top: 4px;
-      transition: all 0.2s;
+      background: rgba(251, 191, 36, 0.15); border: 1px solid var(--neon-gold); color: var(--neon-gold);
+      padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; margin-top: 4px; transition: all 0.2s;
     }
     .btn-lock:hover { background: var(--neon-gold); color: #000; }
 
-    /* NAVEGACIÓN MODERNA */
     nav { display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap; }
     .nav-btn {
-      flex: 1;
-      min-width: 150px;
-      padding: 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-align: center;
-      backdrop-filter: blur(8px);
+      flex: 1; min-width: 150px; padding: 14px; background: var(--card-bg); border: 1px solid var(--card-border);
+      color: var(--text-main); border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; backdrop-filter: blur(8px);
     }
-    .nav-btn.active, .nav-btn:hover { 
-      background: var(--neon-gold); 
-      color: #000; 
-      border-color: var(--neon-gold); 
-      box-shadow: 0 0 20px var(--neon-glow);
-      transform: translateY(-2px);
-    }
+    .nav-btn.active, .nav-btn:hover { background: var(--neon-gold); color: #000; border-color: var(--neon-gold); box-shadow: 0 0 20px var(--neon-glow); transform: translateY(-2px); }
 
     .tab-content { display: none; }
     .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
@@ -128,127 +86,50 @@
 
     .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
 
-    /* TARJETAS GLASSMORPHISM */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-    }
-
-    .card h2 { 
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem; 
-      color: var(--neon-gold); 
-      margin-bottom: 20px; 
-      border-bottom: 1px solid var(--card-border); 
-      padding-bottom: 10px;
-      letter-spacing: 1px;
-    }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 25px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); }
+    .card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; color: var(--neon-gold); margin-bottom: 20px; border-bottom: 1px solid var(--card-border); padding-bottom: 10px; letter-spacing: 1px; }
 
     .form-group { margin-bottom: 18px; }
     label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
     input, select {
-      width: 100%;
-      padding: 12px 15px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      border-radius: 10px;
-      outline: none;
-      font-size: 0.95rem;
-      transition: border-color 0.3s;
+      width: 100%; padding: 12px 15px; background: rgba(0, 0, 0, 0.6); border: 1px solid var(--card-border);
+      color: #fff; border-radius: 10px; outline: none; font-size: 0.95rem; transition: border-color 0.3s;
     }
     input:focus, select:focus { border-color: var(--neon-gold); box-shadow: 0 0 10px var(--neon-glow); }
 
     .btn {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, var(--neon-gold), var(--neon-amber));
-      color: #000;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 0.5px;
+      width: 100%; padding: 14px; background: linear-gradient(135deg, var(--neon-gold), var(--neon-amber));
+      color: #000; border: none; border-radius: 10px; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      transition: all 0.3s; letter-spacing: 0.5px;
     }
-    .btn:hover { 
-      box-shadow: 0 0 20px var(--neon-glow); 
-      transform: translateY(-2px); 
-    }
+    .btn:hover { box-shadow: 0 0 20px var(--neon-glow); transform: translateY(-2px); }
     .btn-danger { background: var(--red-accent); color: white; }
     .btn-danger:hover { background: #dc2626; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-    
     .btn-edit { background: #3b82f6; color: white; margin-right: 5px; }
     .btn-edit:hover { background: #2563eb; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+    .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: none; box-shadow: none; }
 
     .btn-qty {
-      background: rgba(251, 191, 36, 0.2);
-      border: 1px solid var(--neon-gold);
-      color: #fff;
-      font-weight: bold;
-      border-radius: 6px;
-      width: 28px;
-      height: 28px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      background: rgba(251, 191, 36, 0.2); border: 1px solid var(--neon-gold); color: #fff; font-weight: bold;
+      border-radius: 6px; width: 28px; height: 28px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
+      display: inline-flex; align-items: center; justify-content: center;
     }
     .btn-qty:hover { background: var(--neon-gold); color: #000; }
 
     .space-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 15px; }
-    .space-card {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--card-border);
-      padding: 16px 10px;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
+    .space-card { background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); padding: 16px 10px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; }
     .space-card:hover { border-color: var(--neon-gold); }
-    .space-card.active { 
-      border-color: var(--neon-gold); 
-      background: rgba(251, 191, 36, 0.18); 
-      box-shadow: 0 0 15px var(--neon-glow);
-    }
+    .space-card.active { border-color: var(--neon-gold); background: rgba(251, 191, 36, 0.18); box-shadow: 0 0 15px var(--neon-glow); }
     .space-card .name { font-weight: 700; font-size: 1rem; color: #fff; }
     .space-card .total { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--neon-gold); margin-top: 6px; font-weight: 700; }
 
     .category-tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .category-tag {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--card-border);
-      color: var(--neon-gold);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .category-tag { background: rgba(0, 0, 0, 0.6); border: 1px solid var(--card-border); color: var(--neon-gold); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
     .category-tag span { cursor: pointer; color: var(--red-accent); font-weight: bold; }
 
-    .report-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    .report-card {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--card-border);
-      padding: 15px;
-      border-radius: 12px;
-      text-align: center;
-    }
+    .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .report-card { background: rgba(0, 0, 0, 0.5); border: 1px solid var(--card-border); padding: 15px; border-radius: 12px; text-align: center; }
     .report-card .title { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
     .report-card .amount { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--neon-gold); font-weight: 700; margin-top: 5px; }
 
@@ -256,6 +137,28 @@
     th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--card-border); }
     th { color: var(--neon-gold); background: rgba(0, 0, 0, 0.4); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
     td { color: #e2e8f0; }
+
+    /* ========================================= */
+    /* ESTILOS DEL MODAL PERSONALIZADO          */
+    /* ========================================= */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; z-index: 9999;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-box {
+      width: 90%; max-width: 420px;
+      transform: translateY(-20px) scale(0.95); transition: all 0.3s ease;
+      text-align: center;
+    }
+    .modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+    .modal-box h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--neon-gold); margin-bottom: 15px; letter-spacing: 1px; }
+    .modal-box p { font-size: 1.05rem; margin-bottom: 20px; color: #fff; }
+    .modal-box input { margin-bottom: 20px; text-align: center; font-size: 1.1rem; }
+    .modal-actions { display: flex; gap: 15px; justify-content: center; }
+    .modal-actions button { flex: 1; padding: 12px; }
 
     @media (max-width: 768px) {
       header { flex-direction: column; text-align: center; }
@@ -298,31 +201,16 @@
     <button class="nav-btn" onclick="switchTab('history', event)">📜 Historial & Reportes</button>
   </nav>
 
-  <!-- TAB 1: POS MESAS & BARRA -->
+  <!-- TAB 1: POS -->
   <div id="tab-pos" class="tab-content active">
     <div class="grid-layout">
       <div class="card">
         <h2>Registrar Consumo</h2>
         <form id="form-add-consumption" onsubmit="addConsumption(event)">
-          <div class="form-group">
-            <label>Ubicación / Destino</label>
-            <select id="pos-location"></select>
-          </div>
-
-          <div class="form-group">
-            <label>Categoría de Producto</label>
-            <select id="pos-category" onchange="filterProductsByCategory()"></select>
-          </div>
-
-          <div class="form-group">
-            <label>Producto</label>
-            <select id="pos-beer"></select>
-          </div>
-
-          <div class="form-group">
-            <label>Cantidad</label>
-            <input type="number" id="pos-qty" min="1" value="1" required>
-          </div>
+          <div class="form-group"><label>Ubicación / Destino</label><select id="pos-location"></select></div>
+          <div class="form-group"><label>Categoría</label><select id="pos-category" onchange="filterProductsByCategory()"></select></div>
+          <div class="form-group"><label>Producto</label><select id="pos-beer"></select></div>
+          <div class="form-group"><label>Cantidad</label><input type="number" id="pos-qty" min="1" value="1" required></div>
           <button type="submit" class="btn">+ Despachar a la Cuenta</button>
         </form>
       </div>
@@ -330,10 +218,7 @@
       <div class="card">
         <h2>Gestión de Espacios</h2>
         <form onsubmit="addSpace(event)">
-          <div class="form-group">
-            <label>Añadir Nuevo Espacio</label>
-            <input type="text" id="space-name" placeholder="Ej: Mesa 5" required>
-          </div>
+          <div class="form-group"><label>Añadir Nuevo Espacio</label><input type="text" id="space-name" placeholder="Ej: Mesa 5" required></div>
           <button type="submit" class="btn">+ Agregar Mesa/Espacio</button>
         </form>
         <div class="space-grid" id="spaces-list"></div>
@@ -345,13 +230,7 @@
       <div style="overflow-x: auto;">
         <table>
           <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Precio Un.</th>
-              <th style="text-align: center;">Cant. (Editar)</th>
-              <th>Subtotal</th>
-              <th>Acción</th>
-            </tr>
+            <tr><th>Producto</th><th>Precio Un.</th><th style="text-align: center;">Cant.</th><th>Subtotal</th><th>Acción</th></tr>
           </thead>
           <tbody id="active-items-table"></tbody>
         </table>
@@ -371,25 +250,12 @@
       <div class="card">
         <h2>Agregar / Modificar Producto</h2>
         <form onsubmit="saveInventoryItem(event)">
-          <div class="form-group">
-            <label>Categoría</label>
-            <select id="inv-category" required></select>
-          </div>
-          <div class="form-group">
-            <label>Nombre del Producto</label>
-            <input type="text" id="inv-name" required placeholder="Ej: Cerveza Águila">
-          </div>
-          <div class="form-group">
-            <label>Precio de Venta ($)</label>
-            <input type="number" id="inv-price" min="0" required placeholder="8000">
-          </div>
-          <div class="form-group">
-            <label>Cantidad en Stock</label>
-            <input type="number" id="inv-stock" min="0" required placeholder="30">
-          </div>
+          <div class="form-group"><label>Categoría</label><select id="inv-category" required></select></div>
+          <div class="form-group"><label>Nombre del Producto</label><input type="text" id="inv-name" required placeholder="Ej: Cerveza Águila"></div>
+          <div class="form-group"><label>Precio de Venta ($)</label><input type="number" id="inv-price" min="0" required placeholder="8000"></div>
+          <div class="form-group"><label>Cantidad en Stock</label><input type="number" id="inv-stock" min="0" required placeholder="30"></div>
           <button type="submit" class="btn">Guardar en Inventario</button>
         </form>
-
         <div style="margin-top: 25px; border-top: 1px solid var(--card-border); padding-top: 15px;">
           <label style="color: var(--neon-gold); font-weight: bold;">➕ Crear Nueva Categoría</label>
           <div style="display: flex; gap: 10px; margin-top: 8px;">
@@ -399,21 +265,11 @@
           <div class="category-tag-list" id="category-tags"></div>
         </div>
       </div>
-
       <div class="card">
         <h2>Stock de Productos</h2>
         <div style="overflow-x: auto;">
           <table>
-            <thead>
-              <tr>
-                <th>Categoría</th>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Valor Total</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Categoría</th><th>Producto</th><th>Precio</th><th>Stock</th><th>Valor Total</th><th>Acciones</th></tr></thead>
             <tbody id="inventory-table"></tbody>
           </table>
         </div>
@@ -426,41 +282,20 @@
     <div class="card" style="margin-bottom: 25px;">
       <h2>📊 Resumen Financiero por Períodos</h2>
       <div class="report-grid">
-        <div class="report-card">
-          <div class="title">Ventas Hoy</div>
-          <div class="amount" id="rep-today">$0</div>
-        </div>
-        <div class="report-card">
-          <div class="title">Últimos 7 Días</div>
-          <div class="amount" id="rep-week">$0</div>
-        </div>
-        <div class="report-card">
-          <div class="title">Mes Actual</div>
-          <div class="amount" id="rep-month">$0</div>
-        </div>
-        <div class="report-card">
-          <div class="title">Año Actual</div>
-          <div class="amount" id="rep-year">$0</div>
-        </div>
+        <div class="report-card"><div class="title">Ventas Hoy</div><div class="amount" id="rep-today">$0</div></div>
+        <div class="report-card"><div class="title">Últimos 7 Días</div><div class="amount" id="rep-week">$0</div></div>
+        <div class="report-card"><div class="title">Mes Actual</div><div class="amount" id="rep-month">$0</div></div>
+        <div class="report-card"><div class="title">Año Actual</div><div class="amount" id="rep-year">$0</div></div>
       </div>
     </div>
-
     <div class="card">
       <h2>Historial de Ventas Detallado</h2>
       <div class="form-group" style="max-width: 300px;">
-        <label>Filtrar por Fecha</label>
-        <input type="date" id="history-date-filter" onchange="renderHistory()">
+        <label>Filtrar por Fecha</label><input type="date" id="history-date-filter" onchange="renderHistory()">
       </div>
       <div style="overflow-x: auto;">
         <table>
-          <thead>
-            <tr>
-              <th>Fecha y Hora</th>
-              <th>Ubicación</th>
-              <th>Detalle de Productos</th>
-              <th>Total Cobrado</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Fecha y Hora</th><th>Ubicación</th><th>Detalle de Productos</th><th>Total Cobrado</th></tr></thead>
           <tbody id="history-table"></tbody>
         </table>
       </div>
@@ -468,21 +303,26 @@
   </div>
 </div>
 
+<!-- ================= MODAL PERSONALIZADO HTML ================= -->
+<div id="customModal" class="modal-overlay">
+  <div class="modal-box card">
+    <h3>SANTA CHELA</h3>
+    <p id="modalMsg"></p>
+    <input type="text" id="modalInput" style="display: none;">
+    <div class="modal-actions">
+      <button id="modalBtnCancel" class="btn btn-outline" style="display: none;">Cancelar</button>
+      <button id="modalBtnOk" class="btn">Aceptar</button>
+    </div>
+  </div>
+</div>
+<!-- ============================================================ -->
+
 <script>
-  let categories = JSON.parse(localStorage.getItem('sc_categories')) || [
-    "🍺 Cervezas",
-    "🍾 Aguardiente",
-    "🥃 Whisky",
-    "🚬 Cigarrillos",
-    "🍿 Otros / Pasabocas"
-  ];
+  let categories = JSON.parse(localStorage.getItem('sc_categories')) || ["🍺 Cervezas", "🍾 Aguardiente", "🥃 Whisky", "🚬 Cigarrillos", "🍿 Otros"];
   let spaces = JSON.parse(localStorage.getItem('sc_spaces')) || ["Barra Principal", "Mesa 1", "Mesa 2"];
   let inventory = JSON.parse(localStorage.getItem('sc_inventory')) || [
     { id: 1, category: "🍺 Cervezas", name: "Cerveza Águila", price: 8000, stock: 48 },
-    { id: 2, category: "🍺 Cervezas", name: "Club Colombia Dorada", price: 9000, stock: 30 },
-    { id: 3, category: "🍾 Aguardiente", name: "Aguardiente Antioqueño (Media)", price: 45000, stock: 12 },
-    { id: 4, category: "🥃 Whisky", name: "Old Parr 12 Años (Trago)", price: 20000, stock: 20 },
-    { id: 5, category: "🚬 Cigarrillos", name: "Caja Mustang", price: 10000, stock: 15 }
+    { id: 2, category: "🍺 Cervezas", name: "Club Colombia Dorada", price: 9000, stock: 30 }
   ];
   let activeAccounts = JSON.parse(localStorage.getItem('sc_accounts')) || { "Barra Principal": [] };
   let salesHistory = JSON.parse(localStorage.getItem('sc_history')) || [];
@@ -504,50 +344,72 @@
     e.target.classList.add('active');
   }
 
-  function unlockInventoryValue() {
-    let pin = prompt("Ingresa la clave de acceso para ver el valor total del inventario:");
+  /* ========================================================= */
+  /* SISTEMA DE MODALES PERSONALIZADOS (Reemplazo Alert/Prompt)*/
+  /* ========================================================= */
+  function showCustomModal(type, message, defaultVal = '') {
+    return new Promise(resolve => {
+      const overlay = document.getElementById('customModal');
+      const msg = document.getElementById('modalMsg');
+      const input = document.getElementById('modalInput');
+      const btnOk = document.getElementById('modalBtnOk');
+      const btnCancel = document.getElementById('modalBtnCancel');
+
+      msg.innerHTML = message;
+      input.value = defaultVal;
+      input.style.display = type === 'prompt' ? 'block' : 'none';
+      btnCancel.style.display = (type === 'confirm' || type === 'prompt') ? 'block' : 'none';
+
+      overlay.style.display = 'flex';
+      setTimeout(() => overlay.classList.add('active'), 10);
+      
+      if (type === 'prompt') input.focus();
+
+      const closeAndResolve = (val) => {
+        overlay.classList.remove('active');
+        setTimeout(() => overlay.style.display = 'none', 300);
+        btnOk.onclick = null; btnCancel.onclick = null;
+        resolve(val);
+      };
+
+      btnOk.onclick = () => closeAndResolve(type === 'prompt' ? input.value : true);
+      btnCancel.onclick = () => closeAndResolve(type === 'prompt' ? null : false);
+    });
+  }
+
+  const customAlert = (msg) => showCustomModal('alert', msg);
+  const customConfirm = (msg) => showCustomModal('confirm', msg);
+  const customPrompt = (msg, def = '') => showCustomModal('prompt', msg, def);
+
+  /* ========================================================= */
+  /* ACTUALIZACIÓN DE FUNCIONES PARA USAR MODALES ASÍNCRONOS   */
+  /* ========================================================= */
+
+  async function unlockInventoryValue() {
+    let pin = await customPrompt("Ingresa la clave de acceso para ver el valor total del inventario:");
     if (pin === "1234") {
-      isInventoryUnlocked = true;
-      updateKPIs();
+      isInventoryUnlocked = true; updateKPIs();
     } else if (pin !== null) {
-      alert("Clave incorrecta. Acceso denegado.");
+      await customAlert("Clave incorrecta. Acceso denegado.");
     }
   }
 
-  function lockInventoryValue() {
-    isInventoryUnlocked = false;
-    updateKPIs();
-  }
+  function lockInventoryValue() { isInventoryUnlocked = false; updateKPIs(); }
 
   function renderCategories() {
     const posCatSelect = document.getElementById('pos-category');
     const invCatSelect = document.getElementById('inv-category');
     const tagsContainer = document.getElementById('category-tags');
-
     const currentPosVal = posCatSelect.value;
-    posCatSelect.innerHTML = '';
-    invCatSelect.innerHTML = '';
-    tagsContainer.innerHTML = '';
+    
+    posCatSelect.innerHTML = ''; invCatSelect.innerHTML = ''; tagsContainer.innerHTML = '';
 
     categories.forEach(cat => {
-      let opt1 = document.createElement('option');
-      opt1.value = cat; opt1.textContent = cat;
-      posCatSelect.appendChild(opt1);
-
-      let opt2 = document.createElement('option');
-      opt2.value = cat; opt2.textContent = cat;
-      invCatSelect.appendChild(opt2);
-
-      let tag = document.createElement('div');
-      tag.className = 'category-tag';
-      tag.innerHTML = `${cat} <span onclick="removeCategory('${cat}')">✖</span>`;
-      tagsContainer.appendChild(tag);
+      posCatSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+      invCatSelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+      tagsContainer.innerHTML += `<div class="category-tag">${cat} <span onclick="removeCategory('${cat}')">✖</span></div>`;
     });
-
-    if (categories.includes(currentPosVal)) {
-      posCatSelect.value = currentPosVal;
-    }
-
+    if (categories.includes(currentPosVal)) posCatSelect.value = currentPosVal;
     filterProductsByCategory();
   }
 
@@ -555,193 +417,117 @@
     const input = document.getElementById('new-category-input');
     const catName = input.value.trim();
     if (catName && !categories.includes(catName)) {
-      categories.push(catName);
-      saveData();
-      renderCategories();
-      input.value = '';
+      categories.push(catName); saveData(); renderCategories(); input.value = '';
     }
   }
 
-  function removeCategory(catName) {
+  async function removeCategory(catName) {
     if (categories.length <= 1) {
-      alert("Debes mantener al menos una categoría.");
-      return;
+      await customAlert("Debes mantener al menos una categoría."); return;
     }
-    categories = categories.filter(c => c !== catName);
-    saveData();
-    renderCategories();
+    categories = categories.filter(c => c !== catName); saveData(); renderCategories();
   }
 
   function renderPOS() {
     const spaceSelect = document.getElementById('pos-location');
     const spaceGrid = document.getElementById('spaces-list');
-    spaceSelect.innerHTML = '';
-    spaceGrid.innerHTML = '';
+    spaceSelect.innerHTML = ''; spaceGrid.innerHTML = '';
 
     spaces.forEach(s => {
-      let option = document.createElement('option');
-      option.value = s; option.textContent = s;
-      if (s === currentSelectedSpace) option.selected = true;
-      spaceSelect.appendChild(option);
+      let opt = document.createElement('option'); opt.value = s; opt.textContent = s;
+      if (s === currentSelectedSpace) opt.selected = true;
+      spaceSelect.appendChild(opt);
 
       let total = (activeAccounts[s] || []).reduce((acc, item) => acc + (item.price * item.qty), 0);
-
-      let card = document.createElement('div');
-      card.className = `space-card ${s === currentSelectedSpace ? 'active' : ''}`;
-      card.onclick = () => { currentSelectedSpace = s; renderPOS(); };
-      card.innerHTML = `<div class="name">${s}</div><div class="total">$${total}</div>`;
-      spaceGrid.appendChild(card);
+      spaceGrid.innerHTML += `<div class="space-card ${s === currentSelectedSpace ? 'active' : ''}" onclick="currentSelectedSpace='${s}'; renderPOS();">
+        <div class="name">${s}</div><div class="total">$${total}</div></div>`;
     });
-
-    filterProductsByCategory();
-    renderActiveAccount();
+    filterProductsByCategory(); renderActiveAccount();
   }
 
   function filterProductsByCategory() {
     const selectedCategory = document.getElementById('pos-category').value;
     const beerSelect = document.getElementById('pos-beer');
     beerSelect.innerHTML = '';
-
     const filteredItems = inventory.filter(item => item.category === selectedCategory);
-
+    
     if (filteredItems.length === 0) {
-      let opt = document.createElement('option');
-      opt.textContent = "Sin productos en esta categoría";
-      beerSelect.appendChild(opt);
-      return;
+      beerSelect.innerHTML = `<option>Sin productos en esta categoría</option>`; return;
     }
-
     filteredItems.forEach(item => {
-      let opt = document.createElement('option');
-      opt.value = item.id;
-      opt.textContent = `${item.name} - $${item.price} (${item.stock} disp.)`;
-      beerSelect.appendChild(opt);
+      beerSelect.innerHTML += `<option value="${item.id}">${item.name} - $${item.price} (${item.stock} disp.)</option>`;
     });
   }
 
   function renderActiveAccount() {
     document.getElementById('active-space-title').textContent = currentSelectedSpace;
-    const items = activeAccounts[currentSelectedSpace] || [];
-    const tbody = document.getElementById('active-items-table');
-    tbody.innerHTML = '';
+    const tbody = document.getElementById('active-items-table'); tbody.innerHTML = '';
     let total = 0;
-
-    items.forEach((i, index) => {
-      let sub = i.price * i.qty;
-      total += sub;
-      tbody.innerHTML += `
-        <tr>
-          <td>${i.name}</td>
-          <td>$${i.price}</td>
-          <td style="text-align: center;">
-            <button class="btn-qty" onclick="updateItemQuantity(${index}, -1)">-</button>
-            <span style="margin: 0 10px; font-weight: bold; color: var(--neon-gold);">${i.qty}</span>
-            <button class="btn-qty" onclick="updateItemQuantity(${index}, 1)">+</button>
-          </td>
-          <td>$${sub}</td>
-          <td>
-            <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.75rem; width: auto;" onclick="removeConsumptionItem(${index})">❌ Eliminar</button>
-          </td>
-        </tr>
-      `;
+    (activeAccounts[currentSelectedSpace] || []).forEach((i, index) => {
+      let sub = i.price * i.qty; total += sub;
+      tbody.innerHTML += `<tr>
+        <td>${i.name}</td><td>$${i.price}</td>
+        <td style="text-align: center;">
+          <button class="btn-qty" onclick="updateItemQuantity(${index}, -1)">-</button>
+          <span style="margin: 0 10px; font-weight: bold; color: var(--neon-gold);">${i.qty}</span>
+          <button class="btn-qty" onclick="updateItemQuantity(${index}, 1)">+</button>
+        </td>
+        <td>$${sub}</td>
+        <td><button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.75rem; width: auto;" onclick="removeConsumptionItem(${index})">❌</button></td>
+      </tr>`;
     });
-
-    document.getElementById('active-space-total').textContent = total;
-    updateKPIs();
+    document.getElementById('active-space-total').textContent = total; updateKPIs();
   }
 
-  function updateItemQuantity(index, change) {
+  async function updateItemQuantity(index, change) {
     const items = activeAccounts[currentSelectedSpace];
-    if (!items || !items[index]) return;
-
-    const item = items[index];
-    let beer = inventory.find(i => i.id === item.id);
+    const item = items[index]; let beer = inventory.find(i => i.id === item.id);
 
     if (change === 1) {
-      if (beer && beer.stock < 1) {
-        alert("No hay suficiente stock en inventario.");
-        return;
-      }
-      if (beer) beer.stock -= 1;
-      item.qty += 1;
+      if (beer && beer.stock < 1) { await customAlert("No hay suficiente stock en inventario."); return; }
+      if (beer) beer.stock -= 1; item.qty += 1;
     } else if (change === -1) {
-      if (item.qty > 1) {
-        item.qty -= 1;
-        if (beer) beer.stock += 1;
-      } else {
-        removeConsumptionItem(index);
-        return;
-      }
+      if (item.qty > 1) { item.qty -= 1; if (beer) beer.stock += 1; } 
+      else { removeConsumptionItem(index); return; }
     }
-
-    saveData();
-    renderPOS();
-    renderInventory();
+    saveData(); renderPOS(); renderInventory();
   }
 
   function removeConsumptionItem(index) {
     const items = activeAccounts[currentSelectedSpace];
-    if (!items || !items[index]) return;
-
-    const itemToRemove = items[index];
-    let beer = inventory.find(i => i.id === itemToRemove.id);
-    if (beer) {
-      beer.stock += itemToRemove.qty;
-    }
-
-    items.splice(index, 1);
-
-    saveData();
-    renderPOS();
-    renderInventory();
+    let beer = inventory.find(i => i.id === items[index].id);
+    if (beer) beer.stock += items[index].qty;
+    items.splice(index, 1); saveData(); renderPOS(); renderInventory();
   }
 
-  function addConsumption(e) {
+  async function addConsumption(e) {
     e.preventDefault();
     const space = document.getElementById('pos-location').value;
     const beerId = parseInt(document.getElementById('pos-beer').value);
     const qty = parseInt(document.getElementById('pos-qty').value);
 
     let beer = inventory.find(i => i.id === beerId);
-    if (!beer || beer.stock < qty) {
-      alert("No hay suficiente stock en inventario.");
-      return;
-    }
+    if (!beer || beer.stock < qty) { await customAlert("No hay suficiente stock en inventario."); return; }
 
     beer.stock -= qty;
-
     if (!activeAccounts[space]) activeAccounts[space] = [];
     
     let existingItem = activeAccounts[space].find(item => item.id === beerId);
-    if (existingItem) {
-      existingItem.qty += qty;
-    } else {
-      activeAccounts[space].push({ id: beer.id, name: beer.name, price: beer.price, qty: qty });
-    }
+    if (existingItem) existingItem.qty += qty;
+    else activeAccounts[space].push({ id: beer.id, name: beer.name, price: beer.price, qty: qty });
 
-    saveData();
-    renderPOS();
-    renderInventory();
+    saveData(); renderPOS(); renderInventory();
   }
 
   function addSpace(e) {
     e.preventDefault();
-    const input = document.getElementById('space-name');
-    const name = input.value.trim();
-    if (name && !spaces.includes(name)) {
-      spaces.push(name);
-      saveData();
-      input.value = '';
-      renderPOS();
-    }
+    const input = document.getElementById('space-name'); const name = input.value.trim();
+    if (name && !spaces.includes(name)) { spaces.push(name); saveData(); input.value = ''; renderPOS(); }
   }
 
-  function closeAccount() {
+  async function closeAccount() {
     const items = activeAccounts[currentSelectedSpace] || [];
-    if (items.length === 0) {
-      alert("No hay consumo registrado en esta cuenta.");
-      return;
-    }
+    if (items.length === 0) { await customAlert("No hay consumo registrado en esta cuenta."); return; }
 
     let total = items.reduce((acc, i) => acc + (i.price * i.qty), 0);
     let now = new Date();
@@ -749,93 +535,70 @@
     salesHistory.push({
       date: now.toISOString().split('T')[0],
       time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      space: currentSelectedSpace,
-      items: items.map(i => `${i.qty}x ${i.name}`).join(', '),
-      total: total
+      space: currentSelectedSpace, items: items.map(i => `${i.qty}x ${i.name}`).join(', '), total: total
     });
 
     activeAccounts[currentSelectedSpace] = [];
-    saveData();
-    renderPOS();
-    renderHistory();
-    alert(`Cuenta cerrada exitosamente. Total cobrado: $${total}`);
+    saveData(); renderPOS(); renderHistory();
+    await customAlert(`✅ Cuenta cerrada exitosamente.<br><br><strong style="font-size:1.5rem; color:var(--neon-gold)">Total cobrado: $${total}</strong>`);
   }
 
   function renderInventory() {
-    const tbody = document.getElementById('inventory-table');
-    tbody.innerHTML = '';
+    const tbody = document.getElementById('inventory-table'); tbody.innerHTML = '';
     inventory.forEach(item => {
-      let totalValue = item.price * item.stock;
-      tbody.innerHTML += `
-        <tr>
-          <td><small style="color: var(--neon-gold); font-weight: 600;">${item.category}</small></td>
-          <td>${item.name}</td>
-          <td>$${item.price}</td>
-          <td>${item.stock}</td>
-          <td style="color: var(--neon-gold); font-weight: bold;">$${totalValue}</td>
-          <td style="white-space: nowrap;">
-            <button class="btn btn-edit" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="editInventoryItem(${item.id})">✏️ Editar</button>
-            <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="deleteInventoryItem(${item.id})">🗑️ Eliminar</button>
-          </td>
-        </tr>
-      `;
+      tbody.innerHTML += `<tr>
+        <td><small style="color: var(--neon-gold); font-weight: 600;">${item.category}</small></td>
+        <td>${item.name}</td><td>$${item.price}</td><td>${item.stock}</td>
+        <td style="color: var(--neon-gold); font-weight: bold;">$${item.price * item.stock}</td>
+        <td style="white-space: nowrap;">
+          <button class="btn btn-edit" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="editInventoryItem(${item.id})">✏️</button>
+          <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="deleteInventoryItem(${item.id})">🗑️</button>
+        </td>
+      </tr>`;
     });
     updateKPIs();
   }
 
-  function saveInventoryItem(e) {
+  async function saveInventoryItem(e) {
     e.preventDefault();
     const category = document.getElementById('inv-category').value;
     const name = document.getElementById('inv-name').value.trim();
     const price = parseInt(document.getElementById('inv-price').value);
     const stockToAdd = parseInt(document.getElementById('inv-stock').value);
 
-    let existingItem = inventory.find(
-      i => i.category === category && i.name.toLowerCase() === name.toLowerCase()
-    );
+    let existingItem = inventory.find(i => i.category === category && i.name.toLowerCase() === name.toLowerCase());
 
     if (existingItem) {
-      existingItem.stock += stockToAdd;
-      existingItem.price = price;
-      alert(`Se sumaron ${stockToAdd} unidades a "${existingItem.name}". Nuevo stock total: ${existingItem.stock}`);
+      existingItem.stock += stockToAdd; existingItem.price = price;
+      await customAlert(`Se sumaron ${stockToAdd} unidades a "${existingItem.name}". Nuevo stock: ${existingItem.stock}`);
     } else {
       inventory.push({ id: Date.now(), category, name, price, stock: stockToAdd });
     }
-
-    saveData();
-    renderInventory();
-    renderPOS();
-    e.target.reset();
+    saveData(); renderInventory(); renderPOS(); e.target.reset();
   }
 
-  function editInventoryItem(id) {
-    let item = inventory.find(i => i.id === id);
-    if (!item) return;
+  async function editInventoryItem(id) {
+    let item = inventory.find(i => i.id === id); if (!item) return;
 
-    let newName = prompt("Editar nombre del producto:", item.name);
+    let newName = await customPrompt("Editar nombre del producto:", item.name);
     if (newName === null) return;
-
-    let newPrice = prompt("Editar precio de venta ($):", item.price);
+    let newPrice = await customPrompt("Editar precio de venta ($):", item.price);
     if (newPrice === null) return;
-
-    let newStock = prompt("Editar stock total:", item.stock);
+    let newStock = await customPrompt("Editar stock total:", item.stock);
     if (newStock === null) return;
 
     item.name = newName.trim() || item.name;
     item.price = parseInt(newPrice) || item.price;
     item.stock = parseInt(newStock) >= 0 ? parseInt(newStock) : item.stock;
 
-    saveData();
-    renderInventory();
-    renderPOS();
+    saveData(); renderInventory(); renderPOS();
   }
 
-  function deleteInventoryItem(id) {
-    if (confirm("¿Estás seguro de eliminar este producto del inventario?")) {
+  async function deleteInventoryItem(id) {
+    let confirmacion = await customConfirm("¿Estás seguro de eliminar este producto del inventario?");
+    if (confirmacion) {
       inventory = inventory.filter(i => i.id !== id);
-      saveData();
-      renderInventory();
-      renderPOS();
+      saveData(); renderInventory(); renderPOS();
     }
   }
 
@@ -843,43 +606,28 @@
     const tbody = document.getElementById('history-table');
     const filterDate = document.getElementById('history-date-filter').value;
     tbody.innerHTML = '';
-
+    
     let list = [...salesHistory];
-    if (filterDate) {
-      list = list.filter(s => s.date === filterDate);
-    }
+    if (filterDate) list = list.filter(s => s.date === filterDate);
 
     list.reverse().forEach(s => {
-      tbody.innerHTML += `
-        <tr>
-          <td>${s.date} ${s.time}</td>
-          <td>${s.space}</td>
-          <td>${s.items}</td>
-          <td style="color: var(--neon-gold); font-weight: bold; font-family: 'Space Grotesk', sans-serif;">$${s.total}</td>
-        </tr>
-      `;
+      tbody.innerHTML += `<tr>
+        <td>${s.date} ${s.time}</td><td>${s.space}</td><td>${s.items}</td>
+        <td style="color: var(--neon-gold); font-weight: bold;">$${s.total}</td>
+      </tr>`;
     });
-
     renderTimeReports();
   }
 
   function renderTimeReports() {
-    let now = new Date();
-    let todayStr = now.toISOString().split('T')[0];
-    let currentMonthStr = todayStr.substring(0, 7);
-    let currentYearStr = todayStr.substring(0, 4);
+    let now = new Date(); let todayStr = now.toISOString().split('T')[0];
+    let currentMonthStr = todayStr.substring(0, 7); let currentYearStr = todayStr.substring(0, 4);
+    let sevenDaysAgo = new Date(); sevenDaysAgo.setDate(now.getDate() - 7);
 
-    let sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(now.getDate() - 7);
-
-    let totalToday = 0;
-    let totalWeek = 0;
-    let totalMonth = 0;
-    let totalYear = 0;
+    let [totalToday, totalWeek, totalMonth, totalYear] = [0, 0, 0, 0];
 
     salesHistory.forEach(s => {
       let saleDate = new Date(s.date + "T00:00:00");
-
       if (s.date === todayStr) totalToday += s.total;
       if (saleDate >= sevenDaysAgo && saleDate <= now) totalWeek += s.total;
       if (s.date.startsWith(currentMonthStr)) totalMonth += s.total;
@@ -896,7 +644,6 @@
     let today = new Date().toISOString().split('T')[0];
     let totalAll = salesHistory.reduce((acc, s) => acc + s.total, 0);
     let totalToday = salesHistory.filter(s => s.date === today).reduce((acc, s) => acc + s.total, 0);
-    
     let totalInventoryValue = inventory.reduce((acc, item) => acc + (item.price * item.stock), 0);
 
     document.getElementById('kpi-sales-total').textContent = `$${totalAll}`;
@@ -904,22 +651,13 @@
 
     const invKpiElem = document.getElementById('kpi-inventory-value');
     if (isInventoryUnlocked) {
-      invKpiElem.innerHTML = `
-        <span onclick="lockInventoryValue()" style="cursor: pointer;" title="Haz clic para ocultar">
-          $${totalInventoryValue}
-        </span>
-        <br>
-        <button class="btn-lock" onclick="lockInventoryValue()" style="margin-top: 4px;">🔒 Ocultar</button>
-      `;
+      invKpiElem.innerHTML = `<span onclick="lockInventoryValue()" style="cursor: pointer;" title="Haz clic para ocultar">$${totalInventoryValue}</span><br><button class="btn-lock" onclick="lockInventoryValue()" style="margin-top: 4px;">🔒 Ocultar</button>`;
     } else {
       invKpiElem.innerHTML = '<button class="btn-lock" onclick="unlockInventoryValue()">🔒 Ver Valor</button>';
     }
   }
 
-  renderCategories();
-  renderPOS();
-  renderInventory();
-  renderHistory();
+  renderCategories(); renderPOS(); renderInventory(); renderHistory();
 </script>
 
 </body>
