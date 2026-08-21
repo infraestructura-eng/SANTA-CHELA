@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -78,10 +79,23 @@
       padding: 10px 20px; 
       border-radius: 12px; 
       text-align: center;
-      min-width: 130px;
+      min-width: 140px;
     }
     .kpi-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
     .kpi-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--neon-gold); }
+
+    .btn-lock {
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid var(--neon-gold);
+      color: var(--neon-gold);
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      transition: all 0.2s;
+    }
+    .btn-lock:hover { background: var(--neon-gold); color: #000; }
 
     /* NAVEGACIÓN MODERNA */
     nav { display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap; }
@@ -168,8 +182,10 @@
     }
     .btn-danger { background: var(--red-accent); color: white; }
     .btn-danger:hover { background: #dc2626; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+    
+    .btn-edit { background: #3b82f6; color: white; margin-right: 5px; }
+    .btn-edit:hover { background: #2563eb; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
 
-    /* BOTONES DE EDICIÓN RÁPIDA (+ / -) */
     .btn-qty {
       background: rgba(251, 191, 36, 0.2);
       border: 1px solid var(--neon-gold);
@@ -185,12 +201,8 @@
       align-items: center;
       justify-content: center;
     }
-    .btn-qty:hover {
-      background: var(--neon-gold);
-      color: #000;
-    }
+    .btn-qty:hover { background: var(--neon-gold); color: #000; }
 
-    /* GRILLA DE MESAS / ESPACIOS */
     .space-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 15px; }
     .space-card {
       background: rgba(0, 0, 0, 0.5);
@@ -210,13 +222,7 @@
     .space-card .name { font-weight: 700; font-size: 1rem; color: #fff; }
     .space-card .total { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--neon-gold); margin-top: 6px; font-weight: 700; }
 
-    /* TAGS DE CATEGORÍAS EDITABLES */
-    .category-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
+    .category-tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .category-tag {
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid var(--card-border);
@@ -228,13 +234,24 @@
       align-items: center;
       gap: 8px;
     }
-    .category-tag span {
-      cursor: pointer;
-      color: var(--red-accent);
-      font-weight: bold;
-    }
+    .category-tag span { cursor: pointer; color: var(--red-accent); font-weight: bold; }
 
-    /* TABLAS ESTILIZADAS */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .report-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--card-border);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .report-card .title { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .report-card .amount { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--neon-gold); font-weight: 700; margin-top: 5px; }
+
     table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem; }
     th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--card-border); }
     th { color: var(--neon-gold); background: rgba(0, 0, 0, 0.4); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
@@ -263,6 +280,12 @@
         <div class="kpi-value" id="kpi-sales-today">$0</div>
       </div>
       <div class="kpi-card">
+        <div class="kpi-title">Valor Inventario</div>
+        <div class="kpi-value" id="kpi-inventory-value" style="color: #60a5fa;">
+          <button class="btn-lock" onclick="unlockInventoryValue()">🔒 Ver Valor</button>
+        </div>
+      </div>
+      <div class="kpi-card">
         <div class="kpi-title">Caja Total</div>
         <div class="kpi-value" id="kpi-sales-total">$0</div>
       </div>
@@ -272,7 +295,7 @@
   <nav>
     <button class="nav-btn active" onclick="switchTab('pos', event)">🪑 Mesas & Barra</button>
     <button class="nav-btn" onclick="switchTab('inventory', event)">📦 Inventario</button>
-    <button class="nav-btn" onclick="switchTab('history', event)">📜 Historial de Ventas</button>
+    <button class="nav-btn" onclick="switchTab('history', event)">📜 Historial & Reportes</button>
   </nav>
 
   <!-- TAB 1: POS MESAS & BARRA -->
@@ -317,7 +340,6 @@
       </div>
     </div>
 
-    <!-- CUENTA ACTIVA CON EDICIÓN DE CANTIDAD -->
     <div class="card" style="margin-top: 25px;">
       <h2>Cuenta Activa: <span id="active-space-title" style="color: #fff;">Barra Principal</span></h2>
       <div style="overflow-x: auto;">
@@ -355,7 +377,7 @@
           </div>
           <div class="form-group">
             <label>Nombre del Producto</label>
-            <input type="text" id="inv-name" required placeholder="Ej: Águila / Antioqueño / Mustang">
+            <input type="text" id="inv-name" required placeholder="Ej: Cerveza Águila">
           </div>
           <div class="form-group">
             <label>Precio de Venta ($)</label>
@@ -363,12 +385,11 @@
           </div>
           <div class="form-group">
             <label>Cantidad en Stock</label>
-            <input type="number" id="inv-stock" min="0" required placeholder="50">
+            <input type="number" id="inv-stock" min="0" required placeholder="30">
           </div>
           <button type="submit" class="btn">Guardar en Inventario</button>
         </form>
 
-        <!-- PANEL PARA GESTIONAR CATEGORÍAS -->
         <div style="margin-top: 25px; border-top: 1px solid var(--card-border); padding-top: 15px;">
           <label style="color: var(--neon-gold); font-weight: bold;">➕ Crear Nueva Categoría</label>
           <div style="display: flex; gap: 10px; margin-top: 8px;">
@@ -389,7 +410,8 @@
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Acción</th>
+                <th>Valor Total</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody id="inventory-table"></tbody>
@@ -399,10 +421,32 @@
     </div>
   </div>
 
-  <!-- TAB 3: HISTORIAL -->
+  <!-- TAB 3: HISTORIAL & REPORTES -->
   <div id="tab-history" class="tab-content">
+    <div class="card" style="margin-bottom: 25px;">
+      <h2>📊 Resumen Financiero por Períodos</h2>
+      <div class="report-grid">
+        <div class="report-card">
+          <div class="title">Ventas Hoy</div>
+          <div class="amount" id="rep-today">$0</div>
+        </div>
+        <div class="report-card">
+          <div class="title">Últimos 7 Días</div>
+          <div class="amount" id="rep-week">$0</div>
+        </div>
+        <div class="report-card">
+          <div class="title">Mes Actual</div>
+          <div class="amount" id="rep-month">$0</div>
+        </div>
+        <div class="report-card">
+          <div class="title">Año Actual</div>
+          <div class="amount" id="rep-year">$0</div>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
-      <h2>Historial de Ventas</h2>
+      <h2>Historial de Ventas Detallado</h2>
       <div class="form-group" style="max-width: 300px;">
         <label>Filtrar por Fecha</label>
         <input type="date" id="history-date-filter" onchange="renderHistory()">
@@ -443,6 +487,7 @@
   let activeAccounts = JSON.parse(localStorage.getItem('sc_accounts')) || { "Barra Principal": [] };
   let salesHistory = JSON.parse(localStorage.getItem('sc_history')) || [];
   let currentSelectedSpace = "Barra Principal";
+  let isInventoryUnlocked = false;
 
   function saveData() {
     localStorage.setItem('sc_categories', JSON.stringify(categories));
@@ -459,7 +504,21 @@
     e.target.classList.add('active');
   }
 
-  // RENDERIZAR OPCIONES DE CATEGORÍAS EN DESPLEGABLES Y ETIQUETAS
+  function unlockInventoryValue() {
+    let pin = prompt("Ingresa la clave de acceso para ver el valor total del inventario:");
+    if (pin === "1234") {
+      isInventoryUnlocked = true;
+      updateKPIs();
+    } else if (pin !== null) {
+      alert("Clave incorrecta. Acceso denegado.");
+    }
+  }
+
+  function lockInventoryValue() {
+    isInventoryUnlocked = false;
+    updateKPIs();
+  }
+
   function renderCategories() {
     const posCatSelect = document.getElementById('pos-category');
     const invCatSelect = document.getElementById('inv-category');
@@ -560,7 +619,6 @@
     });
   }
 
-  // RENDERIZAR CUENTA ACTIVA CON BOTONES DE + Y -
   function renderActiveAccount() {
     document.getElementById('active-space-title').textContent = currentSelectedSpace;
     const items = activeAccounts[currentSelectedSpace] || [];
@@ -592,7 +650,6 @@
     updateKPIs();
   }
 
-  // FUNCIÓN PARA AUMENTAR O DISMINUIR CANTIDADES (+1 / -1)
   function updateItemQuantity(index, change) {
     const items = activeAccounts[currentSelectedSpace];
     if (!items || !items[index]) return;
@@ -600,19 +657,18 @@
     const item = items[index];
     let beer = inventory.find(i => i.id === item.id);
 
-    if (change === 1) { // Si sumamos 1
+    if (change === 1) {
       if (beer && beer.stock < 1) {
         alert("No hay suficiente stock en inventario.");
         return;
       }
       if (beer) beer.stock -= 1;
       item.qty += 1;
-    } else if (change === -1) { // Si restamos 1
+    } else if (change === -1) {
       if (item.qty > 1) {
         item.qty -= 1;
         if (beer) beer.stock += 1;
       } else {
-        // Si llega a 0, se elimina
         removeConsumptionItem(index);
         return;
       }
@@ -656,7 +712,6 @@
 
     if (!activeAccounts[space]) activeAccounts[space] = [];
     
-    // Si ya existe el producto en la cuenta, suma la cantidad
     let existingItem = activeAccounts[space].find(item => item.id === beerId);
     if (existingItem) {
       existingItem.qty += qty;
@@ -710,37 +765,78 @@
     const tbody = document.getElementById('inventory-table');
     tbody.innerHTML = '';
     inventory.forEach(item => {
+      let totalValue = item.price * item.stock;
       tbody.innerHTML += `
         <tr>
           <td><small style="color: var(--neon-gold); font-weight: 600;">${item.category}</small></td>
           <td>${item.name}</td>
           <td>$${item.price}</td>
           <td>${item.stock}</td>
-          <td><button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="deleteInventoryItem(${item.id})">Eliminar</button></td>
+          <td style="color: var(--neon-gold); font-weight: bold;">$${totalValue}</td>
+          <td style="white-space: nowrap;">
+            <button class="btn btn-edit" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="editInventoryItem(${item.id})">✏️ Editar</button>
+            <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.8rem; width: auto;" onclick="deleteInventoryItem(${item.id})">🗑️ Eliminar</button>
+          </td>
         </tr>
       `;
     });
+    updateKPIs();
   }
 
   function saveInventoryItem(e) {
     e.preventDefault();
     const category = document.getElementById('inv-category').value;
-    const name = document.getElementById('inv-name').value;
+    const name = document.getElementById('inv-name').value.trim();
     const price = parseInt(document.getElementById('inv-price').value);
-    const stock = parseInt(document.getElementById('inv-stock').value);
+    const stockToAdd = parseInt(document.getElementById('inv-stock').value);
 
-    inventory.push({ id: Date.now(), category, name, price, stock });
+    let existingItem = inventory.find(
+      i => i.category === category && i.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (existingItem) {
+      existingItem.stock += stockToAdd;
+      existingItem.price = price;
+      alert(`Se sumaron ${stockToAdd} unidades a "${existingItem.name}". Nuevo stock total: ${existingItem.stock}`);
+    } else {
+      inventory.push({ id: Date.now(), category, name, price, stock: stockToAdd });
+    }
+
     saveData();
     renderInventory();
     renderPOS();
     e.target.reset();
   }
 
-  function deleteInventoryItem(id) {
-    inventory = inventory.filter(i => i.id !== id);
+  function editInventoryItem(id) {
+    let item = inventory.find(i => i.id === id);
+    if (!item) return;
+
+    let newName = prompt("Editar nombre del producto:", item.name);
+    if (newName === null) return;
+
+    let newPrice = prompt("Editar precio de venta ($):", item.price);
+    if (newPrice === null) return;
+
+    let newStock = prompt("Editar stock total:", item.stock);
+    if (newStock === null) return;
+
+    item.name = newName.trim() || item.name;
+    item.price = parseInt(newPrice) || item.price;
+    item.stock = parseInt(newStock) >= 0 ? parseInt(newStock) : item.stock;
+
     saveData();
     renderInventory();
     renderPOS();
+  }
+
+  function deleteInventoryItem(id) {
+    if (confirm("¿Estás seguro de eliminar este producto del inventario?")) {
+      inventory = inventory.filter(i => i.id !== id);
+      saveData();
+      renderInventory();
+      renderPOS();
+    }
   }
 
   function renderHistory() {
@@ -763,15 +859,61 @@
         </tr>
       `;
     });
+
+    renderTimeReports();
+  }
+
+  function renderTimeReports() {
+    let now = new Date();
+    let todayStr = now.toISOString().split('T')[0];
+    let currentMonthStr = todayStr.substring(0, 7);
+    let currentYearStr = todayStr.substring(0, 4);
+
+    let sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(now.getDate() - 7);
+
+    let totalToday = 0;
+    let totalWeek = 0;
+    let totalMonth = 0;
+    let totalYear = 0;
+
+    salesHistory.forEach(s => {
+      let saleDate = new Date(s.date + "T00:00:00");
+
+      if (s.date === todayStr) totalToday += s.total;
+      if (saleDate >= sevenDaysAgo && saleDate <= now) totalWeek += s.total;
+      if (s.date.startsWith(currentMonthStr)) totalMonth += s.total;
+      if (s.date.startsWith(currentYearStr)) totalYear += s.total;
+    });
+
+    document.getElementById('rep-today').textContent = `$${totalToday}`;
+    document.getElementById('rep-week').textContent = `$${totalWeek}`;
+    document.getElementById('rep-month').textContent = `$${totalMonth}`;
+    document.getElementById('rep-year').textContent = `$${totalYear}`;
   }
 
   function updateKPIs() {
     let today = new Date().toISOString().split('T')[0];
     let totalAll = salesHistory.reduce((acc, s) => acc + s.total, 0);
     let totalToday = salesHistory.filter(s => s.date === today).reduce((acc, s) => acc + s.total, 0);
+    
+    let totalInventoryValue = inventory.reduce((acc, item) => acc + (item.price * item.stock), 0);
 
     document.getElementById('kpi-sales-total').textContent = `$${totalAll}`;
     document.getElementById('kpi-sales-today').textContent = `$${totalToday}`;
+
+    const invKpiElem = document.getElementById('kpi-inventory-value');
+    if (isInventoryUnlocked) {
+      invKpiElem.innerHTML = `
+        <span onclick="lockInventoryValue()" style="cursor: pointer;" title="Haz clic para ocultar">
+          $${totalInventoryValue}
+        </span>
+        <br>
+        <button class="btn-lock" onclick="lockInventoryValue()" style="margin-top: 4px;">🔒 Ocultar</button>
+      `;
+    } else {
+      invKpiElem.innerHTML = '<button class="btn-lock" onclick="unlockInventoryValue()">🔒 Ver Valor</button>';
+    }
   }
 
   renderCategories();
