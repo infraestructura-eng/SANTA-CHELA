@@ -27,7 +27,6 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
     
-    /* FONDO MÁS CLARO Y VISIBLE */
     body {
       background: linear-gradient(135deg, rgba(10, 6, 3, 0.45), rgba(5, 3, 1, 0.55)), 
                   url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80') center/cover fixed no-repeat;
@@ -170,6 +169,27 @@
     .btn-danger { background: var(--red-accent); color: white; }
     .btn-danger:hover { background: #dc2626; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
 
+    /* BOTONES DE EDICIÓN RÁPIDA (+ / -) */
+    .btn-qty {
+      background: rgba(251, 191, 36, 0.2);
+      border: 1px solid var(--neon-gold);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-qty:hover {
+      background: var(--neon-gold);
+      color: #000;
+    }
+
     /* GRILLA DE MESAS / ESPACIOS */
     .space-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 15px; }
     .space-card {
@@ -189,6 +209,30 @@
     }
     .space-card .name { font-weight: 700; font-size: 1rem; color: #fff; }
     .space-card .total { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--neon-gold); margin-top: 6px; font-weight: 700; }
+
+    /* TAGS DE CATEGORÍAS EDITABLES */
+    .category-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .category-tag {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--card-border);
+      color: var(--neon-gold);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .category-tag span {
+      cursor: pointer;
+      color: var(--red-accent);
+      font-weight: bold;
+    }
 
     /* TABLAS ESTILIZADAS */
     table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem; }
@@ -244,13 +288,7 @@
 
           <div class="form-group">
             <label>Categoría de Producto</label>
-            <select id="pos-category" onchange="filterProductsByCategory()">
-              <option value="Cervezas">🍺 Cervezas</option>
-              <option value="Aguardiente">🍾 Aguardiente</option>
-              <option value="Whisky">🥃 Whisky</option>
-              <option value="Cigarrillos">🚬 Cigarrillos</option>
-              <option value="Otros">🍿 Otros / Pasabocas</option>
-            </select>
+            <select id="pos-category" onchange="filterProductsByCategory()"></select>
           </div>
 
           <div class="form-group">
@@ -279,7 +317,7 @@
       </div>
     </div>
 
-    <!-- CUENTA ACTIVA CON OPCIÓN DE EDITAR/QUITAR -->
+    <!-- CUENTA ACTIVA CON EDICIÓN DE CANTIDAD -->
     <div class="card" style="margin-top: 25px;">
       <h2>Cuenta Activa: <span id="active-space-title" style="color: #fff;">Barra Principal</span></h2>
       <div style="overflow-x: auto;">
@@ -288,7 +326,7 @@
             <tr>
               <th>Producto</th>
               <th>Precio Un.</th>
-              <th>Cant.</th>
+              <th style="text-align: center;">Cant. (Editar)</th>
               <th>Subtotal</th>
               <th>Acción</th>
             </tr>
@@ -313,13 +351,7 @@
         <form onsubmit="saveInventoryItem(event)">
           <div class="form-group">
             <label>Categoría</label>
-            <select id="inv-category" required>
-              <option value="Cervezas">🍺 Cervezas</option>
-              <option value="Aguardiente">🍾 Aguardiente</option>
-              <option value="Whisky">🥃 Whisky</option>
-              <option value="Cigarrillos">🚬 Cigarrillos</option>
-              <option value="Otros">🍿 Otros / Pasabocas</option>
-            </select>
+            <select id="inv-category" required></select>
           </div>
           <div class="form-group">
             <label>Nombre del Producto</label>
@@ -335,6 +367,16 @@
           </div>
           <button type="submit" class="btn">Guardar en Inventario</button>
         </form>
+
+        <!-- PANEL PARA GESTIONAR CATEGORÍAS -->
+        <div style="margin-top: 25px; border-top: 1px solid var(--card-border); padding-top: 15px;">
+          <label style="color: var(--neon-gold); font-weight: bold;">➕ Crear Nueva Categoría</label>
+          <div style="display: flex; gap: 10px; margin-top: 8px;">
+            <input type="text" id="new-category-input" placeholder="Ej: 🍸 Cocteles" style="margin: 0;">
+            <button type="button" class="btn" style="width: auto; padding: 0 20px;" onclick="addCategory()">Añadir</button>
+          </div>
+          <div class="category-tag-list" id="category-tags"></div>
+        </div>
       </div>
 
       <div class="card">
@@ -383,19 +425,27 @@
 </div>
 
 <script>
+  let categories = JSON.parse(localStorage.getItem('sc_categories')) || [
+    "🍺 Cervezas",
+    "🍾 Aguardiente",
+    "🥃 Whisky",
+    "🚬 Cigarrillos",
+    "🍿 Otros / Pasabocas"
+  ];
   let spaces = JSON.parse(localStorage.getItem('sc_spaces')) || ["Barra Principal", "Mesa 1", "Mesa 2"];
   let inventory = JSON.parse(localStorage.getItem('sc_inventory')) || [
-    { id: 1, category: "Cervezas", name: "Cerveza Águila", price: 8000, stock: 48 },
-    { id: 2, category: "Cervezas", name: "Club Colombia Dorada", price: 9000, stock: 30 },
-    { id: 3, category: "Aguardiente", name: "Aguardiente Antioqueño (Media)", price: 45000, stock: 12 },
-    { id: 4, category: "Whisky", name: "Old Parr 12 Años (Trago)", price: 20000, stock: 20 },
-    { id: 5, category: "Cigarrillos", name: "Caja Mustang", price: 10000, stock: 15 }
+    { id: 1, category: "🍺 Cervezas", name: "Cerveza Águila", price: 8000, stock: 48 },
+    { id: 2, category: "🍺 Cervezas", name: "Club Colombia Dorada", price: 9000, stock: 30 },
+    { id: 3, category: "🍾 Aguardiente", name: "Aguardiente Antioqueño (Media)", price: 45000, stock: 12 },
+    { id: 4, category: "🥃 Whisky", name: "Old Parr 12 Años (Trago)", price: 20000, stock: 20 },
+    { id: 5, category: "🚬 Cigarrillos", name: "Caja Mustang", price: 10000, stock: 15 }
   ];
   let activeAccounts = JSON.parse(localStorage.getItem('sc_accounts')) || { "Barra Principal": [] };
   let salesHistory = JSON.parse(localStorage.getItem('sc_history')) || [];
   let currentSelectedSpace = "Barra Principal";
 
   function saveData() {
+    localStorage.setItem('sc_categories', JSON.stringify(categories));
     localStorage.setItem('sc_spaces', JSON.stringify(spaces));
     localStorage.setItem('sc_inventory', JSON.stringify(inventory));
     localStorage.setItem('sc_accounts', JSON.stringify(activeAccounts));
@@ -407,6 +457,60 @@
     document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
     document.getElementById(`tab-${tabId}`).classList.add('active');
     e.target.classList.add('active');
+  }
+
+  // RENDERIZAR OPCIONES DE CATEGORÍAS EN DESPLEGABLES Y ETIQUETAS
+  function renderCategories() {
+    const posCatSelect = document.getElementById('pos-category');
+    const invCatSelect = document.getElementById('inv-category');
+    const tagsContainer = document.getElementById('category-tags');
+
+    const currentPosVal = posCatSelect.value;
+    posCatSelect.innerHTML = '';
+    invCatSelect.innerHTML = '';
+    tagsContainer.innerHTML = '';
+
+    categories.forEach(cat => {
+      let opt1 = document.createElement('option');
+      opt1.value = cat; opt1.textContent = cat;
+      posCatSelect.appendChild(opt1);
+
+      let opt2 = document.createElement('option');
+      opt2.value = cat; opt2.textContent = cat;
+      invCatSelect.appendChild(opt2);
+
+      let tag = document.createElement('div');
+      tag.className = 'category-tag';
+      tag.innerHTML = `${cat} <span onclick="removeCategory('${cat}')">✖</span>`;
+      tagsContainer.appendChild(tag);
+    });
+
+    if (categories.includes(currentPosVal)) {
+      posCatSelect.value = currentPosVal;
+    }
+
+    filterProductsByCategory();
+  }
+
+  function addCategory() {
+    const input = document.getElementById('new-category-input');
+    const catName = input.value.trim();
+    if (catName && !categories.includes(catName)) {
+      categories.push(catName);
+      saveData();
+      renderCategories();
+      input.value = '';
+    }
+  }
+
+  function removeCategory(catName) {
+    if (categories.length <= 1) {
+      alert("Debes mantener al menos una categoría.");
+      return;
+    }
+    categories = categories.filter(c => c !== catName);
+    saveData();
+    renderCategories();
   }
 
   function renderPOS() {
@@ -456,7 +560,7 @@
     });
   }
 
-  // MOSTRAR CUENTA Y BOTÓN PARA CORREGIR/ELIMINAR ÍTEMS
+  // RENDERIZAR CUENTA ACTIVA CON BOTONES DE + Y -
   function renderActiveAccount() {
     document.getElementById('active-space-title').textContent = currentSelectedSpace;
     const items = activeAccounts[currentSelectedSpace] || [];
@@ -471,10 +575,14 @@
         <tr>
           <td>${i.name}</td>
           <td>$${i.price}</td>
-          <td>${i.qty}</td>
+          <td style="text-align: center;">
+            <button class="btn-qty" onclick="updateItemQuantity(${index}, -1)">-</button>
+            <span style="margin: 0 10px; font-weight: bold; color: var(--neon-gold);">${i.qty}</span>
+            <button class="btn-qty" onclick="updateItemQuantity(${index}, 1)">+</button>
+          </td>
           <td>$${sub}</td>
           <td>
-            <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.75rem; width: auto;" onclick="removeConsumptionItem(${index})">❌ Quitar</button>
+            <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.75rem; width: auto;" onclick="removeConsumptionItem(${index})">❌ Eliminar</button>
           </td>
         </tr>
       `;
@@ -484,20 +592,47 @@
     updateKPIs();
   }
 
-  // FUNCIÓN PARA REVERTIR/EDITAR ERRORES
+  // FUNCIÓN PARA AUMENTAR O DISMINUIR CANTIDADES (+1 / -1)
+  function updateItemQuantity(index, change) {
+    const items = activeAccounts[currentSelectedSpace];
+    if (!items || !items[index]) return;
+
+    const item = items[index];
+    let beer = inventory.find(i => i.id === item.id);
+
+    if (change === 1) { // Si sumamos 1
+      if (beer && beer.stock < 1) {
+        alert("No hay suficiente stock en inventario.");
+        return;
+      }
+      if (beer) beer.stock -= 1;
+      item.qty += 1;
+    } else if (change === -1) { // Si restamos 1
+      if (item.qty > 1) {
+        item.qty -= 1;
+        if (beer) beer.stock += 1;
+      } else {
+        // Si llega a 0, se elimina
+        removeConsumptionItem(index);
+        return;
+      }
+    }
+
+    saveData();
+    renderPOS();
+    renderInventory();
+  }
+
   function removeConsumptionItem(index) {
     const items = activeAccounts[currentSelectedSpace];
     if (!items || !items[index]) return;
 
     const itemToRemove = items[index];
-
-    // Devuelve el stock al inventario
     let beer = inventory.find(i => i.id === itemToRemove.id);
     if (beer) {
       beer.stock += itemToRemove.qty;
     }
 
-    // Remueve el item de la cuenta activa
     items.splice(index, 1);
 
     saveData();
@@ -520,7 +655,14 @@
     beer.stock -= qty;
 
     if (!activeAccounts[space]) activeAccounts[space] = [];
-    activeAccounts[space].push({ id: beer.id, name: beer.name, price: beer.price, qty: qty });
+    
+    // Si ya existe el producto en la cuenta, suma la cantidad
+    let existingItem = activeAccounts[space].find(item => item.id === beerId);
+    if (existingItem) {
+      existingItem.qty += qty;
+    } else {
+      activeAccounts[space].push({ id: beer.id, name: beer.name, price: beer.price, qty: qty });
+    }
 
     saveData();
     renderPOS();
@@ -632,6 +774,7 @@
     document.getElementById('kpi-sales-today').textContent = `$${totalToday}`;
   }
 
+  renderCategories();
   renderPOS();
   renderInventory();
   renderHistory();
